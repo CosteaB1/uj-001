@@ -1,4 +1,6 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef,Inject  } from '@angular/core';
+import { DOCUMENT } from '@angular/common'; 
+
 import * as $ from 'jQuery';
 import * as SIP from 'sip.js/dist/sip';
 import { UA } from 'sip.js/dist/sip';
@@ -9,10 +11,15 @@ import { UA } from 'sip.js/dist/sip';
   templateUrl: './webphone.component.html',
   styleUrls: ['./webphone.component.css']
 })
+
 export class WebphoneComponent implements OnInit {
-  userAgent: any;
+  userAgent: SIP.UA;
   loadAPI: Promise<any>;
   url: string;
+  session: any;
+  peerConnection: any;
+  element: HTMLElement;
+
 
   constructor(private elementRef: ElementRef, ) { 
     
@@ -20,7 +27,7 @@ export class WebphoneComponent implements OnInit {
 
   ngOnInit() {
 
-    var userAgent = new SIP.UA({
+    this.userAgent = new SIP.UA({
       uri: '6003@192.168.1.161',
       transportOptions: {
         wsServers: ['ws://192.168.1.161:8088/ws']
@@ -36,28 +43,13 @@ export class WebphoneComponent implements OnInit {
 
 
 
+ 
 
 
+  configuseragent(callnumber: string) {
+    console.log(callnumber)
 
-  configuseragent() {
-    var userAgent = new SIP.UA({
-      uri: '6003@192.168.1.161',
-      transportOptions: {
-        wsServers: ['ws://192.168.1.161:8088/ws']
-      },
-      authorizationUser: '6003',
-      password: '1234',
-
-    });
-    // var SIP = require("sip.js");
-/* could also be 
-var SIP = require("sip.js");
-var UA = SIP.UA;
-*/    // var UA = SIP.UA();
-
-
-    // var test = SIP.UA();
-    var session = userAgent.invite('6003@192.168.1.161', {
+    var session = this.userAgent.invite(callnumber + '@192.168.1.161', {
       sessionDescriptionHandlerOptions: {
           constraints: {
               audio: true,
@@ -67,17 +59,15 @@ var UA = SIP.UA;
   });
 
 
-    
+  
 
   }
 
-  addJsToElement(src: string): HTMLScriptElement {
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = src;
-    this.elementRef.nativeElement.appendChild(script);
-    return script;
-  }
+  // stopseesion () {
+  //   this.configuseragent().session.terminate();
+
+  // }
+
 
 
 
