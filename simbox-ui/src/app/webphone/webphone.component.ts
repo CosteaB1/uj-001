@@ -20,7 +20,15 @@ export class WebphoneComponent implements OnInit {
 
   ngOnInit() {
 
+    var userAgent = new SIP.UA({
+      uri: '6003@192.168.1.161',
+      transportOptions: {
+        wsServers: ['ws://192.168.1.161:8088/ws']
+      },
+      authorizationUser: '6003',
+      password: '1234',
 
+    });
  
 
 
@@ -58,28 +66,6 @@ var UA = SIP.UA;
       }
   });
 
-  // var remoteVideo = document.getElementById('remoteVideo');
-  // var localVideo = document.getElementById('localVideo');
-  
-  // session.on('trackAdded', function() {
-  //   // We need to check the peer connection to determine which track was added
-  
-  //   var pc = session.sessionDescriptionHandler.peerConnection;
-  
-  //   // Gets remote tracks
-  //   var remoteStream = new MediaStream();
-  //   pc.getReceivers().forEach(function(receiver) {
-  //     remoteStream.addTrack(receiver.track);
-  //   });
-
-  
-  //   // Gets local tracks
-  //   var localStream = new MediaStream();
-  //   pc.getSenders().forEach(function(sender) {
-  //     localStream.addTrack(sender.track);
-  //   });
-
-  // });
 
     
 
