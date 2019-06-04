@@ -47,12 +47,14 @@
 
 
       <!-- call controls -->
-      <form action="" onsubmit="dial(); return false;">
-        <input type="text" id="target" placeholder="Enter a SIP URI" autofocus>
+      <input type="submit" id="ua-invite-submit" value="Invite" />
+
+      <form action="" onsubmit="configuseragent(); return false;">
+        <input type="text" id="target" placeholder="Enter a SIP URI">
         <input class="call-control" type="submit" value="Call">
         <input id="hangup" class="call-control" type="button" value="Hang Up" onclick="endSession()">
       </form>
-      
+
      
   
       <!-- DTMF -->
