@@ -1,5 +1,7 @@
 
   
+  @import url('https://fonts.googleapis.com/css?family=Poppins');
+
   #navbar ul { 
     margin: 0; 
     padding: 5px; 
@@ -133,6 +135,11 @@ input[type=checkbox] {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background-color: #56baed;
+  width: 260px;
+  height: 500px;
+  border-radius: 22px;
+
 }
 
 #sb {
@@ -153,5 +160,9 @@ input[type=checkbox] {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-
 }
+
+#target {
+  text-align: center;
+}
+
