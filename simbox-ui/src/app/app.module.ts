@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS  }    from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
@@ -16,6 +16,8 @@ import {ButtonModule} from 'primeng/button';
 import {ContextMenuModule} from 'primeng/contextmenu';
 import { WebphoneComponent } from './webphone/webphone.component';
 import { MNOComponent } from './mno/mno.component';
+import { TokenInterceptor } from './token.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { MNOComponent } from './mno/mno.component';
     ButtonModule,
     ContextMenuModule
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

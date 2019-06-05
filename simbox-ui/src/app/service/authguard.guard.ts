@@ -8,17 +8,29 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AuthguardGuard implements CanActivate  {
-  constructor(private router: Router,
-    private authService:AuthService){}
-  path: ActivatedRouteSnapshot[];  route: ActivatedRouteSnapshot;
-  canActivate(){
 
-    if(this.authService.checktokeStatus()){
+  // constructor(private router: Router,
+  //   private authService:AuthService){}
+  // path: ActivatedRouteSnapshot[];  route: ActivatedRouteSnapshot;
+  // canActivate(){
+
+  //   if(this.authService.checktokeStatus()){
       
+  //     return true;
+  //   }
+  //   this.router.navigate(['/login']);
+  //   return false;
+  // }
+  
+  constructor(private authService: AuthService, private router: Router){}
+
+  path: ActivatedRouteSnapshot[];
+  route: ActivatedRouteSnapshot;
+  canActivate(){
+    if (this.authService.isLoggedIn()){
       return true;
     }
     this.router.navigate(['/login']);
     return false;
   }
-  
 }

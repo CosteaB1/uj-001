@@ -4,6 +4,7 @@ import { SimBoxListService } from '../service/sim-box-list.service';
 import { MenuItem } from 'primeng/api';
 import {MessageService} from 'primeng/components/common/messageservice';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -18,11 +19,11 @@ export class NavigationComponent implements OnInit {
   items: MenuItem[];
 
 
-  constructor(private sList:SimBoxListService,private messageService: MessageService,private router:Router) { }
+  constructor(private authService: AuthService,private sList:SimBoxListService,private messageService: MessageService,private router:Router) { }
   
 
   ngOnInit() {
-    this.sList.SimBoxList();
+    // this.sList.SimBoxList();
     
     this.sList.getSimBoxsList().then(data=>this.simBoxes = data);
     this.items = [
@@ -33,15 +34,21 @@ export class NavigationComponent implements OnInit {
   }
 
   onClick(event, simbox){
+
     console.log("On click",event,simbox);
+    localStorage.setItem('simboxid',simbox.id);
     this.router.navigate(['/MnoList']);
 
   }
-  Logout() {
-    localStorage.removeItem('authtoken');
-    this.router.navigate(['/login']);
-    console.log ('authtoken is removed');
+  logout(){
+    this.authService.logout().subscribe(success =>{
+      if (success){
+        this.router.navigate(['/login']);
+      }
+    })
+
   }
+
   MainPage () {
     this.router.navigate(['']);
 

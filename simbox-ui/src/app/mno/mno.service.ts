@@ -15,7 +15,9 @@ export class MNOService {
   constructor(private http: HttpClient, private router:Router) { }
 
   getMnosList() {
-    return this.http.get(`${environment.apiUrl}/MNO`)
+    let simboxid = localStorage.getItem('simboxid');
+    console.log (simboxid);
+    return this.http.get(`${environment.apiUrl}/MNO?simbox_id=${simboxid}` )
                 .toPromise()
                 .then(res => <mno[]> res)
                 .then(data => { 
