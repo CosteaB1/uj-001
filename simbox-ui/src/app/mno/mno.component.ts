@@ -7,6 +7,7 @@ import { mno } from './mno';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import * as SIP from 'sip.js/dist/sip';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-mno',
@@ -25,7 +26,7 @@ export class MNOComponent implements OnInit {
   userAgent: any;
 
 
-  constructor(private mList:MNOService,private messageService: MessageService,private router:Router) { }
+  constructor(private authService: AuthService,private mList:MNOService,private messageService: MessageService,private router:Router) { }
 
   ngOnInit() {
    
@@ -48,27 +49,18 @@ export class MNOComponent implements OnInit {
   webphoneroute(event, mno){
     console.log("On click",event,mno);
     this.router.navigate(['/webphone']);
-  
 
-   
-
-    
 
   }
 
-  configuseragent () {
-    var userAgent = new SIP.UA({
-      uri: '6003@192.168.1.161',
-      transportOptions: {
-        wsServers: ['ws://192.168.1.161:8088/ws']
-      },
-      authorizationUser: '6003',
-      password: '1234',
- 
-     });
-     this.router.navigate(['/webphone']);
   
+ logout(){
+  this.authService.logout().subscribe(success =>{
+    if (success){
+      this.router.navigate(['/login']);
+    }
+  })
 
- }
+}
 
 }

@@ -36,7 +36,7 @@
     </div>
 
     <!-- Login Form -->
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
 
       <input type="text" formControlName="username" id="login" class="fadeIn second" name="login" placeholder="login" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" autofocus="autofocus">
       <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
@@ -49,9 +49,8 @@
         <div *ngIf="f.password.errors.required">Password is required</div>
       </div>
 
-        <button [disabled]="isloading" class="btn loginbutonas">
+        <button type=submit [disabled]="!loginForm.valid" class="btn loginbutonas" >
           <div class="h-container">
-            <div></div>
             <div>Login</div>
           </div>
         </button>

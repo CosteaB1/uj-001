@@ -26,17 +26,17 @@ export class SimBoxListService {
 }
 
 
-SimBoxList() {
-  if (localStorage.getItem("authtoken")==null ) {
-    this.router.navigate(['login']);
-  }
-    else {
-      this.router.navigate(['']);
+// SimBoxList() {
+//   if (localStorage.getItem("authtoken")==null ) {
+//     this.router.navigate(['login']);
+//   }
+//     else {
+//       this.router.navigate(['']);
 
-    // this.router.navigate(['']); 
-  }
+//     // this.router.navigate(['']); 
+//   }
 
-}
+// }
 
 
 
