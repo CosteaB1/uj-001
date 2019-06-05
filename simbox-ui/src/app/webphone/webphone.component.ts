@@ -1,9 +1,10 @@
-import { Component, OnInit, ElementRef,Inject  } from '@angular/core';
+import { Component, OnInit, ElementRef,Inject, Input  } from '@angular/core';
 import { DOCUMENT } from '@angular/common'; 
 
 import * as $ from 'jQuery';
 import * as SIP from 'sip.js/dist/sip';
 import { UA } from 'sip.js/dist/sip';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -37,29 +38,21 @@ export class WebphoneComponent implements OnInit {
 
     });
  
-
-
   }
-
-
-
- 
-
 
   configuseragent(callnumber: string) {
     console.log(callnumber)
-
-    var session = this.userAgent.invite(callnumber + '@192.168.1.161', {
+   var session = this.userAgent.invite(callnumber + '@192.168.1.161', {
       sessionDescriptionHandlerOptions: {
           constraints: {
               audio: true,
               video: false
+
           }
+
       }
+
   });
-
-
-  
 
   }
 
@@ -67,10 +60,6 @@ export class WebphoneComponent implements OnInit {
   //   this.configuseragent().session.terminate();
 
   // }
-
-
-
-
 
   RegisterB() {
 
@@ -82,5 +71,14 @@ export class WebphoneComponent implements OnInit {
     }
 
 
+  }
+
+  button(b){
+   (<HTMLInputElement>document.getElementById("target")).value = 
+   (<HTMLInputElement>document.getElementById("target")).value + b;
+  }
+
+  clear_button(){
+    (<HTMLInputElement>document.getElementById("target")).value ="";
   }
 }

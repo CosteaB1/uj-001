@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @Table(name="MNO")
 @NamedQuery(name="MNOList.getAll",query="select t from MNOList t WHERE simbox_id = 1")
 
+
 public class MNOList {
 
 	@Id

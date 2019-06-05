@@ -37,6 +37,7 @@ import { TokenInterceptor } from './token.interceptor';
     TableModule,
     ButtonModule,
     ContextMenuModule
+    
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],

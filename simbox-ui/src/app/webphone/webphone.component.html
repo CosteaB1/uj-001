@@ -1,15 +1,4 @@
-<html>
-
-<head>
-  <title>SIP.js Demo Phone</title>
-
-
-
-</head>
-
-<body>
-
-  <div id="navbar">
+<div id="navbar">
     <ul>
       <li> <a (click)="MainPage()"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             version="1.1" id="Layer_1" x="0px" y="0px" width="111px" height="33px" viewBox="0 0 111 33"
@@ -38,37 +27,172 @@
           </svg></a></li>
       <li><a (click)="Logout()" style="font-size: 16px;">Log Out</a></li>
     </ul>
-  </div>
+	</div>
+	
 
+	<!-- call controls -->
 
+<div class="dial-pad-wrap">
+	<div class="left-pan">
+		<div class="contacts">
+			<div class="title">SIMBOX MNO LIST</div>
+			<div class="people clearfix">
+				<div class="photo pull-left">
+					<img src="http://s.gravatar.com/avatar/24a65a47147cddf5b270bc9f609ffa2a?s=128">
+				</div>
+				<div class="info pull-left">
+					<div class="name">Mohan Khadka</div>
+					<div class="phone"><span>+977</span><span class="number">0123456789</span></div>
+				</div>
+			</div>
+			<div class="people clearfix">
+				<div class="photo pull-left">
+					<img src="http://s.gravatar.com/avatar/fdd39509d4ae5392e3bfa7c72e61c3a9?s=128">
+				</div>
+				<div class="info pull-left">
+					<div class="name">Arjun Amgain</div>
+					<div class="phone"><span>+977</span><span class="number">5320100325</span></div>
+				</div>
+			</div>
+			<div class="people clearfix">
+				<div class="photo pull-left">
+					<img src="https://s3.amazonaws.com/uifaces/faces/twitter/rogie/128.jpg">
+				</div>
+				<div class="info pull-left">
+					<div class="name">Jane Doe</div>
+					<div class="phone"><span>+977</span><span class="number">0002453687</span></div>
+				</div>
+			</div>
+			<div class="people clearfix">
+				<div class="photo pull-left">
+					<img src="https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg">
+				</div>
+				<div class="info pull-left">
+					<div class="name">John Doe</div>
+					<div class="phone"><span>+977</span><span class="number">7703256581</span></div>
+				</div>
+			</div>
+		</div>
+		<div class="calling">
+			<div class="title fadeIn animated infinite">Calling</div>
+			<div class="photo bounceInDown animated"></div>
+			<div class="name rubberBand animated">Unknown</div>
+			<div class="number"></div>
+			<div class="action">
+				<div class="lnk"><button class="btn fadeInLeftBig animated"><i class="fa fa-mic"></i></button></div>
+				<div class="lnk"><button class="btn fadeInLeftBig animated"><i class="fa fa-vol"></i></button></div>
+				<div class="lnk"><button class="btn fadeInRightBig animated"><i class="fa fa-camera"></i></button></div>
+				<div class="lnk"><button class="btn fadeInRightBig animated"><i class="fa fa-video-camera"></i></button></div>
+			</div>
+			<div class="call-end bounceInUp animated">
+				<button class="btn"><i class="fa fa-phone"></i></button>
+			</div>
+		</div>
+	</div>
+	<div class="dial-pad">
+			<input #callnumber type="text" id="target" placeholder="Enter a SIP URI" class="fadeIn second">
+		<div class="dial-table">
+			<div class="dial-table-row">
+				<div class="dial-table-col">
+					<div class="dial-key-wrap" data-key="1" (click)="button(1)"> 
+						<div class="dial-key" >1</div>
+						<div class="dial-sub-key">&nbsp;</div>
+					</div>
+				</div>
+				<div class="dial-table-col">
+					<div class="dial-key-wrap" data-key="2" (click)="button(2)">
+						<div class="dial-key" >2</div>
+						<div class="dial-sub-key">abc</div>
+					</div>
+				</div>
+				<div class="dial-table-col">
+					<div class="dial-key-wrap" data-key="3" (click)="button(3)">
+						<div class="dial-key" >3</div>
+						<div class="dial-sub-key">def</div>
+					</div>
+				</div>
+			</div>
+			<div class="dial-table-row">
+				<div class="dial-table-col">
+					<div class="dial-key-wrap" data-key="4" (click)="button(4)">
+						<div class="dial-key" >4</div>
+						<div class="dial-sub-key">ghi</div>
+					</div>
+				</div>
+				<div class="dial-table-col">
+					<div class="dial-key-wrap" data-key="5" (click)="button(5)">
+						<div class="dial-key" >5</div>
+						<div class="dial-sub-key">jkl</div>
+					</div>
+				</div>
+				<div class="dial-table-col">
+					<div class="dial-key-wrap" data-key="6" (click)="button(6)">
+						<div class="dial-key" >6</div>
+						<div class="dial-sub-key">mno</div>
+					</div>
+				</div>
+			</div>
+			<div class="dial-table-row">
+				<div class="dial-table-col">
+					<div class="dial-key-wrap" data-key="7" (click)="button(7)">
+						<div class="dial-key" >7</div>
+						<div class="dial-sub-key">pqrs</div>
+					</div>
+				</div>
+				<div class="dial-table-col">
+					<div class="dial-key-wrap" data-key="8" (click)="button(8)">
+						<div class="dial-key" >8</div>
+						<div class="dial-sub-key">tuv</div>
+					</div>
+				</div>
+				<div class="dial-table-col">
+					<div class="dial-key-wrap" data-key="9" (click)="button(9)">
+						<div class="dial-key" >9</div>
+						<div class="dial-sub-key">wxyz</div>
+					</div>
+				</div>
+			</div>
+			<div class="dial-table-row">
+				<div class="dial-table-col">
+					<div class="dial-key-wrap" data-key="*">
+						<div class="dial-key">*</div>
+						<div class="dial-sub-key">&nbsp;</div>
+					</div>
+				</div>
+				<div class="dial-table-col">
+					<div class="dial-key-wrap" data-key="0" (click)="button(0)">
+						<div class="dial-key" >0</div>
+						<div class="dial-sub-key">+</div>
+					</div>
+				</div>
+				<div class="dial-table-col">
+					<div class="dial-key-wrap" data-key="end">
+						<div class="dial-key">#</div>
+						<div class="dial-sub-key">&nbsp;</div>
+					</div>
+				</div>
+			</div>
+			<div class="dial-table-row no-sub-key">
+				<div class="dial-table-col">
+						<div class="dial-key-wrap" data-key="end">
 
-
-
-  <!-- call controls -->
-
-  <form action="">
-    <input #callnumber type="text" id="target" placeholder="Enter a SIP URI">
-    <button (click)="configuseragent(callnumber.value)">calltest</button>
-  </form>
-
-
-  <button (click)="stopseesion()">endcalltest</button>
-
-  <!-- DTMF -->
-  <div id="dtmf-buttons">
-    <button id="1">1</button>
-    <button id="2">2</button>
-    <button id="3">3</button>
-    <button id="4">4</button>
-    <button id="5">5</button>
-    <button id="6">6</button>
-    <button id="7">7</button>
-    <button id="8">8</button>
-    <button id="9">9</button>
-    <button id="0">0</button>
-  </div>
-
-
-</body>
-
-</html>
+						<div class="dial-key"  (click)="stopseesion()"><i class="fa fa-phone"></i>End</div>
+						<div class="dial-sub-key"></div>
+						</div>
+				</div>
+				<div class="dial-table-col">
+					<div class=" bcall" data-key="call" (click)="configuseragent(callnumber.value)">
+						<div class="dial-key"  ><i class="fa fa-phone"></i>Call</div>
+						<div class="dial-sub-key">Call</div>
+					</div>
+				</div>
+				<div class="dial-table-col">
+					<div class="dial-key-wrap" data-key="back"  (click)="clear_button()">
+						<div class="dial-key" ><i class="fa fa-phone">C</i></div>
+						<div class="dial-sub-key">Back</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
