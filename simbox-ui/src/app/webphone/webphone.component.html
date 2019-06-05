@@ -6,7 +6,7 @@
   <script src="js/sip-0.5.0.js"></script>
   <script src="js/ua.js"></script>
   <script src="js/button-action.js"></script>
-
+  
 
 </head>
 
@@ -49,27 +49,48 @@
 
   <!-- call controls -->
 
-  <form action="">
-    <input #callnumber type="text" id="target" placeholder="Enter a SIP URI">
-    <button (click)="configuseragent(player.value)">calltest</button>
-  </form>
-
-
-  <button (click)="stopseesion()">endcalltest</button>
+  
 
   <!-- DTMF -->
-  <div id="dtmf-buttons">
-    <button id="1">1</button>
-    <button id="2">2</button>
-    <button id="3">3</button>
-    <button id="4">4</button>
-    <button id="5">5</button>
-    <button id="6">6</button>
-    <button id="7">7</button>
-    <button id="8">8</button>
-    <button id="9">9</button>
-    <button id="0">0</button>
+<div id="content">
+  <div id="cell">
+    <div id="c1">
+        <form action="" id="form1">
+            <input #callnumber type="text" id="target" placeholder="Enter a SIP URI" >
+        </form>
+        <div id="sb">
+          <button (click)="configuseragent(callnumber.value)">CALL</button>
+          <button (click)="stopseesion()">END</button>
+          <button (click)="clear_button()"><<</button>
+
+        </div>
+    </div>
+    <div id="c2">
+
+      <div id="sb">
+          <button (click)="button(1)" id="1">1</button>
+          <button (click)="button(2)" id="2">2</button>
+          <button (click)="button(3)" id="3">3</button>
+      </div>
+      <div id="sb">
+          <button (click)="button(4)" id="4">4</button>
+          <button (click)="button(5)" id="5">5</button>
+          <button (click)="button(6)" id="6">6</button>
+      </div>
+      <div id="sb">
+          <button (click)="button(7)" id="7">7</button>
+          <button (click)="button(8)" id="8">8</button>
+          <button (click)="button(9)" id="9">9</button>
+      </div>
+      <div id="sb">
+          <button id="*">*</button>
+          <button (click)="button(0)" id="0">0</button>
+          <button id="#">#</button>
+      </div>
+    </div>
+
   </div>
+</div>
 
 
 </body>
