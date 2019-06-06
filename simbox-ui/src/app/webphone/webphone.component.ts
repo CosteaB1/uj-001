@@ -27,30 +27,21 @@ export class WebphoneComponent implements OnInit {
   };
 
   ngOnInit() {
-
     this.userAgent = new SIP.UA({
-      uri: '6003@192.168.1.161',
+      uri: '6003@192.168.1.24',
       transportOptions: {
-        wsServers: ['ws://192.168.1.161:8088/ws']
+        wsServers: ['ws://192.168.1.24:8088/ws']
       },
       authorizationUser: '6003',
       password: '1234',
 
     });
- 
-
 
   }
 
-
-
- 
-
-
   configuseragent(callnumber: string) {
     console.log(callnumber)
-
-    var session = this.userAgent.invite(callnumber + '@192.168.1.161', {
+ var session = this.userAgent.invite(callnumber + '@192.168.1.24', {
       sessionDescriptionHandlerOptions: {
           constraints: {
               audio: true,
@@ -58,20 +49,11 @@ export class WebphoneComponent implements OnInit {
           }
       }
   });
-
-
-  
-
   }
-
   // stopseesion () {
   //   this.configuseragent().session.terminate();
 
   // }
-
-
-
-
 
   RegisterB() {
 
@@ -88,9 +70,17 @@ export class WebphoneComponent implements OnInit {
   button(b){
    (<HTMLInputElement>document.getElementById("target")).value = 
    (<HTMLInputElement>document.getElementById("target")).value + b;
-  }
+   /*
+   var digits = [];
+   digits.push(b);
+   for ()
+   alert(digits);*/
+}
 
-  clear_button(){
-    (<HTMLInputElement>document.getElementById("target")).value ="";
+
+ 
+  clear_button(callnumber: string){
+    callnumber = callnumber.substring(0, callnumber.length-1);
+    (<HTMLInputElement>document.getElementById("target")).value =  callnumber;
   }
 }
