@@ -15,6 +15,8 @@ import com.unifun.voice.orm.SimboxListDb;
 @Path("/SimboxList")
 @ApplicationScoped
 @Produces("application/json")
+
+
 public class SimBoxList {
 	@Inject
 	EntityManager em;

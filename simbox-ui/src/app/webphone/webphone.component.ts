@@ -27,29 +27,35 @@ export class WebphoneComponent implements OnInit {
   };
 
   ngOnInit() {
+
     this.userAgent = new SIP.UA({
-      uri: '6003@192.168.1.24',
+      uri: '6003@192.168.1.161',
       transportOptions: {
-        wsServers: ['ws://192.168.1.24:8088/ws']
+        wsServers: ['ws://192.168.1.161:8088/ws']
       },
       authorizationUser: '6003',
       password: '1234',
 
     });
-
+ 
   }
 
   configuseragent(callnumber: string) {
     console.log(callnumber)
- var session = this.userAgent.invite(callnumber + '@192.168.1.24', {
+   var session = this.userAgent.invite(callnumber + '@192.168.1.161', {
       sessionDescriptionHandlerOptions: {
           constraints: {
               audio: true,
               video: false
+
           }
+
       }
+
   });
+
   }
+
   // stopseesion () {
   //   this.configuseragent().session.terminate();
 
@@ -70,13 +76,7 @@ export class WebphoneComponent implements OnInit {
   button(b){
    (<HTMLInputElement>document.getElementById("target")).value = 
    (<HTMLInputElement>document.getElementById("target")).value + b;
-   /*
-   var digits = [];
-   digits.push(b);
-   for ()
-   alert(digits);*/
-}
-
+  }
 
  
   clear_button(callnumber: string){

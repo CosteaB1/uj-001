@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
   { path: '', component: NavigationComponent, canActivate: [AuthguardGuard] },
-  { path: 'webphone', component: WebphoneComponent },
+  { path: 'webphone', component: WebphoneComponent, canActivate: [AuthguardGuard] },
   { path: 'MnoList', component: MNOComponent, canActivate: [AuthguardGuard] },
 
   {
