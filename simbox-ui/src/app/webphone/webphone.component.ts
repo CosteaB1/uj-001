@@ -78,7 +78,9 @@ export class WebphoneComponent implements OnInit {
    (<HTMLInputElement>document.getElementById("target")).value + b;
   }
 
-  clear_button(){
-    (<HTMLInputElement>document.getElementById("target")).value ="";
+ 
+  clear_button(callnumber: string){
+    callnumber = callnumber.substring(0, callnumber.length-1);
+    (<HTMLInputElement>document.getElementById("target")).value =  callnumber;
   }
 }
