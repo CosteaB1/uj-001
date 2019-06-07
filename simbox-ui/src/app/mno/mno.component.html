@@ -29,20 +29,41 @@
   </ul> 
 </div> 
 
-
-<p-table [value]="mnos" [(contextMenuSelection)]="selectmno" [contextMenu]="cm"  >
-  <ng-template pTemplate="header"  >
-      <tr>
-          <th >ID</th>
-          <th>Name</th>
-      </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-mno >
-      <tr [pContextMenuRow]="rowData" (click)=" webphoneroute($event,mno)">
-          <td>{{mno.id}}</td>
-          <td>{{mno.name}}</td>
-      </tr>
-  </ng-template>
-</p-table>
-<p-contextMenu #cm [model]="items"></p-contextMenu>
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 28" version="1.1" width="14px" height="15">
+          <g id="surface1">
+          <path d="M 0 2 L 0 4 L 24 4 L 24 2 Z M 0 11 L 0 13 L 24 13 L 24 11 Z M 0 20 L 0 22 L 24 22 L 24 20 Z "/>
+          </g>
+          </svg> Simbox Menu</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+          <p-table [value]="mnos" [(contextMenuSelection)]="selectmno" [contextMenu]="cm"  >
+            <ng-template pTemplate="header"  >
+                <tr>
+                    <th >ID</th>
+                    <th>Name</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-mno >
+                <tr [pContextMenuRow]="rowData" (click)=" webphoneroute($event,mno)">
+                    <td>{{mno.id}}</td>
+                    <td>{{mno.name}}</td>
+                </tr>
+            </ng-template>
+          </p-table>
+          <p-contextMenu #cm [model]="items"></p-contextMenu>
+      </div>
+</div>
 

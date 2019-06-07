@@ -1,3 +1,4 @@
+<a href="https://icons8.com/icon/9729/call-filled">Call Filled icon by Icons8</a>
 <div id="navbar">
     <ul>
       <li> <a (click)="MainPage()"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -29,9 +30,29 @@
     </ul>
 	</div>
 	
+	<div class="d-flex" id="wrapper">
 
+		<!-- Sidebar -->
+		<div class="bg-light border-right" id="sidebar-wrapper">
+		  <div class="list-group list-group-flush">
+			<a href="#" class="list-group-item list-group-item-action bg-light"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 28" version="1.1" width="14px" height="15">
+			  <g id="surface1">
+			  <path d="M 0 2 L 0 4 L 24 4 L 24 2 Z M 0 11 L 0 13 L 24 13 L 24 11 Z M 0 20 L 0 22 L 24 22 L 24 20 Z "/>
+			  </g>
+			  </svg> Simbox Menu</a>
+			<a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
+			<a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+			<a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+			<a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+			<a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+		  </div>
+		</div>
+		<!-- /#sidebar-wrapper -->
+	
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+		  
 	<!-- call controls -->
-
 <div class="dial-pad-wrap">
 	<div class="left-pan">
 		<div class="contacts">
@@ -182,7 +203,7 @@
 				</div>
 				<div class="dial-table-col">
 					<div class=" bcall" data-key="call" (click)="configuseragent(callnumber.value)">
-						<div class="dial-key"  ><i class="fa fa-phone"></i>Call</div>
+						<div class="dial-key"  ><i class="fa fa-phone"><img id="callpic" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAI+SURBVGhD7dnNS1RRHMbxsXZhCRX+AdVf4EI3QWXgRqJFUaEguAhzIQhFLRURQd1Ym3YtdKEQtYhome0TF/YHhBQovmykF7Kovg+4GIbHmXv1nvFXzAMfZuHAee54X849p9RII/93jqEdY3iLVfzEMq4hfM7gIT7iTxVT0MGGyymM4ytccecZmhAiKnIPm3Bla3mMI885LMIVzGMQR5YBfIErltcvXEVdcwJzcIUOYx3NqEsu4ANckSIMIXkuYguuQFGeIGlu4zvc4EXqR7Lcx2+4gYs0j+NIkhG4QYuk07UHyTIJN3CRnqMVyTIDN3BRdKu9gaTRZM4NXs1LtO19ur+X0zPoNJIm7zWhJ/IjlE/8LkNT9crvfkY3kucBKgev5gfuwEXT8168wXvov9yC5NGgeW6x31CXXzdP9MTWr+sKOzvQ6RMqmjttwBV2tqHX11DRLHYFrrCjKXsHwmUWrrCjU68T4aJXU1fY0S32OsLlPLK+2elO1odw0YPrHVxpZxQhk+eUeo0wSzXl0bpTnlut5k4hMwFXeD8vEC5noWmFK1zNJYSK1mJd0Vo0iw2zPqsiWgl3RbO4hRDRtMIVzOoVQkT7E65gVksIEW2yuIJZTSNEDnN9fEJd3uyyZBeuZBahtsh0jruStWi1I1S6kHfJcw3Jl2wOEu3tucL7uYmQ0Sz2KVzpSlrGDB0dTK31XG1oJl2LLTJ3oY17dyBJV8VT5Ap0QZcfxAL+yZzEMHTtaKco2SZLI42ESqn0F7yojXzjEQP4AAAAAElFTkSuQmCC"></i></div>
 						<div class="dial-sub-key">Call</div>
 					</div>
 				</div>
@@ -195,4 +216,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
