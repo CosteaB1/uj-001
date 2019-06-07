@@ -81,3 +81,42 @@
     }
   }
   
+#p-table {
+    margin-top: 40px;
+}
+
+#logout{
+  border: none;
+}
+
+#logout:hover {
+  cursor: pointer;
+}
+
+.container-fluid {
+  margin-top: 40px;
+}
+
+.navbar {
+  box-shadow: 0 12px 15px 0 rgba(0,0,0,.10),0 17px 12px 0 rgba(0,0,0,.19);
+}
+
+#navbar-brand {
+  width: 259px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+#p-table {
+  text-align: center;
+  width: 500px;
+}
+
+#alignment {
+  display: flex !important;
+  justify-content: center !important;
+}
+  
+.navbar-brand {
+  margin-left: 3em;
+}
