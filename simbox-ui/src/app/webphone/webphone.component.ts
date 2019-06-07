@@ -33,9 +33,16 @@ export class WebphoneComponent implements OnInit {
 
 
   ngOnInit() {
-    this.configList.getConfigList().then(data=> { this.config = data
-      console.log ("testing" + this.items , this.config , data, this.configList, this.selectconfig ); 
-    });
+    this.configList.getConfigList().then(data=>this.config = data);
+
+    this.items = [
+      { label: 'View', icon: 'pi pi-search', command: (event) => console.log("view", event,this.selectconfig) },
+      { label: 'Delete', icon: 'pi pi-times', command: (event) => console.log("delete", event, this.selectconfig) }
+  ];
+
+
+ 
+
 
       // console.log ( this.config.values() ); 
 
