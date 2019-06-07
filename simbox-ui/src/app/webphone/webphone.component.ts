@@ -1,11 +1,13 @@
 import { Component, OnInit, ElementRef,Inject, Input  } from '@angular/core';
-import { DOCUMENT } from '@angular/common'; 
 
-import * as $ from 'jQuery';
 import * as SIP from 'sip.js/dist/sip';
-import { UA } from 'sip.js/dist/sip';
-import { FormsModule } from '@angular/forms';
+import { AuthService } from '../service/auth.service';
+import { WebphoneService } from '../webphone/webphone.service';
+import {MessageService} from 'primeng/components/common/messageservice';
+import { MenuItem } from 'primeng/api';
 
+import { Router } from '@angular/router';
+import { webphone } from './webphone';
 
 @Component({
   selector: 'app-webphone',
@@ -21,22 +23,29 @@ export class WebphoneComponent implements OnInit {
   peerConnection: any;
   element: HTMLElement;
 
+  config:webphone[];
+  items: MenuItem[];
+  selectconfig:webphone;
 
-  constructor(private elementRef: ElementRef, ) { 
-    
-  };
+
+
+  constructor(private authService: AuthService,private configList:WebphoneService,private router:Router) { }
+
 
   ngOnInit() {
+    this.configList.getConfigList().then(data=>this.config = data);
 
-    this.userAgent = new SIP.UA({
-      uri: '6003@192.168.1.161',
-      transportOptions: {
-        wsServers: ['ws://192.168.1.161:8088/ws']
-      },
-      authorizationUser: '6003',
-      password: '1234',
+    console.log (this.configList.getConfigList().then(data=>this.config = data));
 
-    });
+    // this.userAgent = new SIP.UA({
+    //   uri: '6003@192.168.1.161',
+    //   transportOptions: {
+    //     wsServers: ['ws://192.168.1.161:8088/ws']
+    //   },
+    //   authorizationUser: '6003',
+    //   password: '1234',
+
+    // });
  
   }
 

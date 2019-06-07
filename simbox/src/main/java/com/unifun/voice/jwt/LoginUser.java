@@ -19,7 +19,7 @@ import java.util.*;
 public class LoginUser {
     private static Map<String,String> refreshTokens = new HashMap<>();
 
-    private String SecretKey = genRefreshToken();
+    private String SecretKey = "veryverysecretkey123";
 
     public static Map<String,String> getRefreshTokenInstance() {
         if(refreshTokens == null) {
@@ -50,7 +50,7 @@ public class LoginUser {
             env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
             env.put(Context.PROVIDER_URL, "ldap://localhost:389");
             env.put(Context.SECURITY_AUTHENTICATION, "simple");
-            env.put(Context.SECURITY_PRINCIPAL, "cn=" + username + ",dc=unifun,dc=in");
+			env.put(Context.SECURITY_PRINCIPAL,"cn="+username+",dc=unifun,dc=in");
             env.put(Context.SECURITY_CREDENTIALS, password);
             DirContext ctx = new InitialDirContext(env);
             ctx.close();
@@ -70,7 +70,7 @@ public class LoginUser {
             String token = JWT.create()
                     .withIssuer("auth0")
                     .withClaim("userID", username )
-                    .withExpiresAt(new Date(System.currentTimeMillis()+(10*60*1000)))
+                    .withExpiresAt(new Date(System.currentTimeMillis()+(60*1000*1000)))
                     .sign(algorithmHS);
             String refreshToken = genRefreshToken();
 
@@ -86,11 +86,17 @@ public class LoginUser {
     }
 
     private String genRefreshToken(){
-        String resultUUID = UUID.randomUUID().toString().replace("-", "");
-        resultUUID += UUID.randomUUID().toString().replace("-", "");
-        resultUUID += UUID.randomUUID().toString().replace("-", "");
-
-        return resultUUID;
+        try {
+            Algorithm algorithmHS = Algorithm.HMAC256(SecretKey);
+            String refreshToken = JWT.create()
+                    .withIssuer("auth0")
+                    .withClaim("userID", "text" )
+                    .withExpiresAt(new Date(System.currentTimeMillis()+(60*1000*1000)))
+                    .sign(algorithmHS);
+            return refreshToken;
+        } catch (JWTCreationException exception){
+            return "invalid refresh token";
+        }
     }
 
 
