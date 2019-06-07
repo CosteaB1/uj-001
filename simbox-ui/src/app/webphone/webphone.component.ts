@@ -33,9 +33,12 @@ export class WebphoneComponent implements OnInit {
 
 
   ngOnInit() {
-    this.configList.getConfigList().then(data=>this.config = data);
+    this.configList.getConfigList().then(data=> { this.config = data
+      console.log ("testing" + this.items , this.config , data, this.configList, this.selectconfig ); 
+    });
 
-    console.log (this.configList.getConfigList().then(data=>this.config = data));
+      // console.log ( this.config.values() ); 
+
 
     // this.userAgent = new SIP.UA({
     //   uri: '6003@192.168.1.161',
