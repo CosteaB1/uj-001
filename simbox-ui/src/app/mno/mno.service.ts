@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { mno } from '../Mno/mno';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -23,11 +21,7 @@ export class MNOService {
                 .then(data => { 
                   
                   return data;
-  });
-                 
-
-
-                  
+  });                
 }
 
 
@@ -36,14 +30,7 @@ export class MNOService {
 
 // }
 
-MnoId () {
- let data =this.MnoId ;
- return this.http.post<any>(`${environment.apiUrl}/MNO`,data).pipe(
-  map(data => {
-    let tmp = JSON.parse(data);
-    console.log(tmp && tmp['"Muhaha"'],tmp , tmp['Muhaha'])  })); 
-  
-  } 
+
   
 
 }

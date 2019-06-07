@@ -98,7 +98,7 @@ doLoginUser(username: string, tokens: Tokens){
     this.storeTokens(tokens);
   }
 
-  private doLogoutUser(){
+   doLogoutUser(){
     this.loggedUser=null;
     this.removeTokens();
   }

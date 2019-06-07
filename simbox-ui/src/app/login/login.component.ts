@@ -65,15 +65,20 @@ export class LoginComponent implements OnInit{
   get f() { return this.loginForm.controls;}
 
   login() {
+
     this.authService.login({
       username: this.f.username.value,
       password: this.f.password.value
     })
+ 
     .subscribe(success =>{
+     
       if (success) {
         this.router.navigate(['']);
       }
+      
     });
+   
   }
 
 }

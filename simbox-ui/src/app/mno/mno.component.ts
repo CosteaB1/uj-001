@@ -22,8 +22,7 @@ export class MNOComponent implements OnInit {
   mnos:mno[];
   selectmno:mno;
   items: MenuItem[];
-  http: any;
-  userAgent: any;
+
 
 
   constructor(private authService: AuthService,private mList:MNOService,private messageService: MessageService,private router:Router) { }
@@ -48,9 +47,8 @@ export class MNOComponent implements OnInit {
   }
   webphoneroute(event, mno){
     console.log("On click",event,mno);
+    localStorage.setItem('mnoid',mno.id);
     this.router.navigate(['/webphone']);
-
-
   }
 
   
