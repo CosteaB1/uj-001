@@ -182,7 +182,39 @@
 		</div>
 	</div>
 </div>
+<<<<<<< HEAD
 </div>
 
 <footer>© 2019 Copyright:
 		Made by Costea & Irina  </footer>
+=======
+
+<div id="page-content-wrapper">
+		<div class="container-fluid">
+			<p-table [value]="config" [(contextMenuSelection)]="selectconfig" [contextMenu]="cm"  >
+			  <ng-template pTemplate="header"  >
+				  <tr>
+					  <th >ID</th>
+					  <th>Name</th>
+				  </tr>
+			  </ng-template>
+			  <ng-template pTemplate="body" let-webphone >
+				  <tr [pContextMenuRow]="rowData" (click)="onClick($event,webphone)">
+					  <td>{{webphone.id}}</td>
+					  <td>{{webphone.URI}}</td>
+				  </tr>
+			  </ng-template>
+			</p-table>
+			<p-contextMenu #cm [model]="items"></p-contextMenu>
+		</div>
+
+		<p-table [value]="config" [(contextMenuSelection)]="selectconfig" [contextMenu]="cm"  >
+		<ng-template  let-webphone> 
+				<h1 [pContextMenuRow]="rowData" >{{webphone.URI}}</h1>
+		</ng-template>
+		</p-table>
+
+
+			
+ </div>
+>>>>>>> TestingBranch

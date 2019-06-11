@@ -43,7 +43,6 @@ export class MNOComponent implements OnInit {
   }
   MainPage () {
     this.router.navigate(['']);
-
   }
   webphoneroute(event, mno){
     console.log("On click",event,mno);

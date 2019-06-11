@@ -68,7 +68,7 @@ export class AuthService {
 
   logout(){
     return this.http.post<any>(`${environment.apiUrl}/logout`,{
-      'refreshToken': this.getRefreshToken()
+      'username': this.getloggedUsername()
     }).pipe(
       tap(()=> this.doLogoutUser()),
     mapTo(true),
@@ -93,6 +93,10 @@ export class AuthService {
     return localStorage.getItem(this.JWT_TOKEN);
   }
 
+  getloggedUsername(){
+    return localStorage.getItem("username");
+  }
+
 doLoginUser(username: string, tokens: Tokens){
     this.loggedUser = username;
     this.storeTokens(tokens);
@@ -100,7 +104,12 @@ doLoginUser(username: string, tokens: Tokens){
 
    doLogoutUser(){
     this.loggedUser=null;
+    localStorage.removeItem ("simboxid");
+    localStorage.removeItem ("mnoid");
+    localStorage.removeItem ("username");
     this.removeTokens();
+
+
   }
 
   private getRefreshToken(){

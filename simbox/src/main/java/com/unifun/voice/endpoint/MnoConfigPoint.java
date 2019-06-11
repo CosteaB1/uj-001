@@ -27,7 +27,7 @@ public class MnoConfigPoint {
 		System.out.println("IdOnClick" + id);
 
 		//return JsonbBuilder.create().toJson(em.createNamedQuery("MNOList.getAll", MNOList.class).getResultList());
-		return JsonbBuilder.create().toJson(em.createQuery("Select m from MNOConfigList m WHERE m.mno_id = " + id ,MNOConfigList.class ).getResultList());
+		return JsonbBuilder.create().toJson(em.createQuery("Select m from MNOConfigList m WHERE m.mno_id = " + 1 ,MNOConfigList.class ).getResultList());
 
 	}
 	  

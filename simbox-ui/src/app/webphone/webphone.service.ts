@@ -11,17 +11,28 @@ import { map } from 'rxjs/operators';
 export class WebphoneService {
 
   constructor(private http: HttpClient, private router:Router) { }
+configUrl = 'http://localhost:8080/MnoConfigPoint'; 
+//   getConfigList() {
+//     let mnoconfig = localStorage.getItem('mnoid');
+//     console.log (mnoconfig);
+//     return this.http.get(`${environment.apiUrl}/MnoConfigPoint?mno_id=${mnoconfig}` )
+//                 .toPromise()
+//                 .then(res => <webphone[]> res)
+//                 .then(data => { 
+//                   return data;
+//   });
+// }
 
-  getConfigList() {
-    let mnoconfig = localStorage.getItem('mnoid');
-    console.log (mnoconfig);
-    return this.http.get(`${environment.apiUrl}/MnoConfigPoint?mno_id=${mnoconfig}` )
-                .toPromise()
-                .then(res => <webphone[]> res)
-                .then(data => { 
-                  return data;
-  });
+
+
+getconfig() {
+
+  return this.http.get(`${environment.apiUrl}/MnoConfigPoint` )
+              .toPromise()
+              .then(res => <webphone[]> res)
+              .then(data => { 
+                
+                return data;
+});                
 }
-
-
 }
