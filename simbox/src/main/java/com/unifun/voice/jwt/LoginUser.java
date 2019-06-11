@@ -97,7 +97,7 @@ public class LoginUser {
 			myStmt = myConn.createStatement();
 
 			// 3. Execute SQL query
-			String sql = "insert into logs " + " (name, datelog)" + " values ('" + username + "','" + datat + "')";
+			String sql = "insert into logs " + " (name,Session, datelog)" + " values ('" + username + "','Login','" + datat + "')";
 
 			myStmt.executeUpdate(sql);
 

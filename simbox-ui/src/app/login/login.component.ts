@@ -68,7 +68,8 @@ export class LoginComponent implements OnInit{
 
     this.authService.login({
       username: this.f.username.value,
-      password: this.f.password.value
+      password: this.f.password.value,
+      
     })
  
     .subscribe(success =>{
@@ -78,7 +79,9 @@ export class LoginComponent implements OnInit{
       }
       
     });
-   
+    localStorage.setItem("username", this.f.username.value);
+
+
   }
 
 }
