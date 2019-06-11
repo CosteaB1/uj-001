@@ -187,6 +187,7 @@ body{
 	height:500px;
 	overflow:hidden;
 	position:relative;
+	margin:50px auto 0;
 	background:#ecf0f1;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
@@ -607,7 +608,6 @@ footer{
 .dropdown-conteiner {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
 }
 
 .aaa {
@@ -615,6 +615,6 @@ footer{
   justify-content: center;
   align-items: flex-start;
   flex-direction: row;
-  
+  margin-top: 50px;
 
 }
