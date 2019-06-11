@@ -512,8 +512,19 @@ body{
   margin-left: 3em;
 }
 
+
 .navbar-brand:hover {
   cursor: pointer;
+}
+
+#mousehover:hover {
+  cursor: pointer;
+
+
+}
+
+.container-fluid {
+  margin-top: 40px;
 }
 
 .navbar {

@@ -23,8 +23,6 @@ export class NavigationComponent implements OnInit {
   
 
   ngOnInit() {
-    // this.sList.SimBoxList();
-    
     this.sList.getSimBoxsList().then(data=>this.simBoxes = data);
     this.items = [
       { label: 'View', icon: 'pi pi-search', command: (event) => console.log("view", event,this.selectedSimBox) },
@@ -34,12 +32,11 @@ export class NavigationComponent implements OnInit {
   }
 
   onClick(event, simbox){
-
     console.log("On click",event,simbox);
     localStorage.setItem('simboxid',simbox.id);
     this.router.navigate(['/MnoList']);
-
   }
+
   logout(){
     this.authService.logout().subscribe(success =>{
       if (success){
