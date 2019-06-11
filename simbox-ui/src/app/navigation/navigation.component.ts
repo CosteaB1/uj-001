@@ -51,7 +51,7 @@ export class NavigationComponent implements OnInit {
 
   MainPage () {
     this.router.navigate(['']);
-
+    /*alert("function is called");*/
   }
   
 }
