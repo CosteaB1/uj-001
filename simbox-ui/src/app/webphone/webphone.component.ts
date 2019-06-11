@@ -61,7 +61,7 @@ onClick(event, webphone){
 
   configuseragent(callnumber: string) {
     console.log(callnumber)
-   var session = this.userAgent.invite(callnumber + '@192.168.1.161', {
+   var session = this.userAgent.invite(callnumber + '@192.168.1.24', {
       sessionDescriptionHandlerOptions: {
           constraints: {
               audio: true,
@@ -90,4 +90,19 @@ onClick(event, webphone){
     callnumber = callnumber.substring(0, callnumber.length-1);
     (<HTMLInputElement>document.getElementById("target")).value =  callnumber;
   }
+
+  logout(){
+    this.authService.logout().subscribe(success =>{
+      if (success){
+        this.router.navigate(['/login']);
+      }
+    })
+  }
+
+  MainPage () {
+    this.router.navigate(['']);
+  }
+
+  
+  
 }

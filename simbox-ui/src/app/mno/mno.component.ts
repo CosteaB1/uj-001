@@ -58,6 +58,6 @@ export class MNOComponent implements OnInit {
     }
   })
 
-}
+  }
 
 }

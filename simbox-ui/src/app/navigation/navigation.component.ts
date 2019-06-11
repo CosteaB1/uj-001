@@ -48,10 +48,7 @@ export class NavigationComponent implements OnInit {
 
   MainPage () {
     this.router.navigate(['']);
-  }
-  webphone () {
-    this.router.navigate(['/webphone']);
-
+    /*alert("function is called");*/
   }
   
 }

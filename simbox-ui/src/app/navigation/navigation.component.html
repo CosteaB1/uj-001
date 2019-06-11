@@ -1,9 +1,7 @@
-
-  <nav class="navbar navbar-light bg-light">
-    
-    <a id = "mousehover" (click)="MainPage()" class="navbar-brand" ><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-      version="1.1" id="Layer_1" x="0px" y="0px" width="111px" height="33px" viewBox="0 0 111 33"
-      style="enable-background:new 0 0 111 33;" xml:space="preserve">
+ <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" (click)="MainPage()"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1"
+      x="0px" y="0px" width="111px" height="33px" viewBox="0 0 111 33" style="enable-background:new 0 0 111 33;"
+      xml:space="preserve">
       <style type="text/css">
         .st0 {
           fill-rule: evenodd;
@@ -28,11 +26,8 @@
     </svg></a>
     <a id="logout" class="list-group-item bg-light"  (click)="logout()">Log Out</a>
   </nav>
-  
 
-<div class="d-flex" id="wrapper">
-
-    <!-- Sidebar -->
+<div id = "cont">
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="list-group list-group-flush">
         <a  id = "mousehover" (click)="MainPage()" class="list-group-item list-group-item-action bg-light"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 28" version="1.1" width="14px" height="15">
@@ -55,33 +50,41 @@
 
       </div>
     </div>
-    <!-- /#sidebar-wrapper -->
 
-    <!-- Page Content -->
-<div id="alignment">
-    <div style="width: 50%">
+
+<div id="inner-cont">
+  <div id="tab" style="width: 100%">
+  <div style="width: 50%">
     <div id="page-content-wrapper">
       <div class="container-fluid">
-          <p-table id="p-table" [value]="simBoxes" [(contextMenuSelection)]="selectedSimBox" [contextMenu]="cm"  >
+        <p-table id="p-table" [value]="simBoxes" [(contextMenuSelection)]="selectedSimBox" [contextMenu]="cm"  >
               <ng-template pTemplate="header"  >
                   <tr>
-                      <!--<th >ID</th>-->
+                     
                       <th>Pick SimBox</th>
                   </tr>
               </ng-template>
               <ng-template pTemplate="body" let-simBox>
                   <tr [pContextMenuRow]="rowData" (click)="onClick($event,simBox)">
-                      <!--<td>{{simBox.id}}</td>-->
+                     
                       <td>{{simBox.name}}</td>
                   </tr>
               </ng-template>
-          </p-table>
-            <p-contextMenu #cm [model]="items"></p-contextMenu>
+        </p-table>
+        <p-contextMenu #cm [model]="items"></p-contextMenu>
       </div>
-    </div> <!-- /#page-content-wrapper -->
-
-</div><!-- /#wrapper -->
+    </div>
+  </div>
+</div>
+      
 </div>
 </div>
 
+ <footer>© 2019 Copyright:
+    Made by Costea & Irina  </footer>
+
+    
+
+
+    
  
