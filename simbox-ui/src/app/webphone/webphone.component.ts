@@ -38,31 +38,38 @@ export class WebphoneComponent implements OnInit {
     this.configList.getMnosList().then(data => this.config = data);
   }
 
-myvariable = 'test';
 simboxname = localStorage.getItem ('simboxname');
 
-  test() {
-    let x = localStorage.getItem('test')
-    console.log(x);
-  }
 
-  onClick(event, webphone) {
-    console.log("On click", event, webphone);
-  }
+onClick(webphone){
+
+  this.userAgent = new SIP.UA({
+    uri: webphone.URI,
+    transportOptions: {
+      wsServers: [webphone.wsServer]
+    },
+    authorizationUser: webphone.auth,
+    password: webphone.pass,
+
+  });
+}
 
 
   configuseragent(callnumber: string) {
     console.log(callnumber)
-    var session = this.userAgent.invite(callnumber + '@192.168.1.24', {
+      this.userAgent.invite(callnumber + '@192.168.1.161', {
       sessionDescriptionHandlerOptions: {
-        constraints: {
-          audio: true,
-          video: false
-        }
+          constraints: {
+              audio: true,
+              video: false
+
+          }
+
       }
     });
-
   }
+
+
 
   RegisterB() {
     this.userAgent.ua.start();

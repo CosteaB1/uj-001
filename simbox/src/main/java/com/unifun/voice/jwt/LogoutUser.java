@@ -24,14 +24,7 @@ public class LogoutUser {
     		   System.out.println(req.toString());
     			int sep=req.indexOf(":");
     			String usernameLogout = req.substring(sep+2,req.length()-2);
-    			System.out.println(usernameLogout);
-    			
-    			
     		try {
-    			
-    			
-    			
-    			
     			// 1. Get a connection to database
     			myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "root", "1234");
 
