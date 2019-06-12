@@ -103,6 +103,4 @@ onClick(event, webphone){
     this.router.navigate(['']);
   }
 
-  
-  
 }
