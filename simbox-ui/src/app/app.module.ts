@@ -14,7 +14,6 @@ import {ButtonModule} from 'primeng/button';
 
 import {ContextMenuModule} from 'primeng/contextmenu';
 import { WebphoneComponent } from './webphone/webphone.component';
-import { MNOComponent } from './mno/mno.component';
 import { TokenInterceptor } from './token.interceptor';
 
 
@@ -23,8 +22,7 @@ import { TokenInterceptor } from './token.interceptor';
     AppComponent,
     LoginComponent,
     NavigationComponent,
-    WebphoneComponent,
-    MNOComponent
+    WebphoneComponent
   ],
   imports: [
     HttpClientModule,

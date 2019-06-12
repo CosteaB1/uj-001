@@ -34,7 +34,8 @@ export class NavigationComponent implements OnInit {
   onClick(event, simbox){
     console.log("On click",event,simbox);
     localStorage.setItem('simboxid',simbox.id);
-    this.router.navigate(['/MnoList']);
+    localStorage.setItem('simboxname',simbox.name);
+    this.router.navigate(['/webphone']);
   }
 
   logout(){
@@ -49,6 +50,10 @@ export class NavigationComponent implements OnInit {
   MainPage () {
     this.router.navigate(['']);
     /*alert("function is called");*/
+  }
+  webphone () {
+    this.router.navigate(['/webphone']);
+
   }
   
 }
