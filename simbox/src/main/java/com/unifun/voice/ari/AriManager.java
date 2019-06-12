@@ -30,6 +30,8 @@ public class AriManager {
 		ariHandler = new AriWsEventHandler(this);
 		try {
 			this.ari = AriFactory.nettyHttp(ARI_URL, USER, PASSWORD, AriVersion.ARI_3_0_0, APPLICATION);
+	            
+	            
 		} catch (Exception e) {
 			logger.error("Uri syntax exception...",e);
 		} 
@@ -38,5 +40,6 @@ public class AriManager {
 	public void initWebSocketConnection() throws ARIException {
 		ActionEvents ae = ari.getActionImpl(ActionEvents.class);
 		ae.eventWebsocket(APPLICATION, true, ariHandler);
+
 	}
 }

@@ -161,7 +161,6 @@ public class AriWsEventHandler implements AriCallback<Message>{
 //                    //actionChannels.startMoh(channelId,"");
 //                    ariService.getAri().closeAction(actionChannels);
 //                }
-
 		} catch (Exception e) {
 		    logger.error("Unknown Error",e);
 		}
