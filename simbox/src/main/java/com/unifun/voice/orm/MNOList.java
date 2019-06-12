@@ -19,6 +19,35 @@ public class MNOList {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	int simbox_id;
+	String URI;
+	String wsServer;
+	String authUser;
+	String pass;
+	public String getURI() {
+		return URI;
+	}
+	public void setURI(String uRI) {
+		URI = uRI;
+	}
+	public String getWsServer() {
+		return wsServer;
+	}
+	public void setWsServer(String wsServer) {
+		this.wsServer = wsServer;
+	}
+	public String getAuthUser() {
+		return authUser;
+	}
+	public void setAuthUser(String authUser) {
+		this.authUser = authUser;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
 	public int getSimbox_id() {
 		return simbox_id;
 	}

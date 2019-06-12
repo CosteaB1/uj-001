@@ -1,9 +1,9 @@
-
 export interface webphone{
     id;
-	mno_id;
-	URI ;
-	wsServer;
-	authUser;
-
+    name;
+    simbox_id;
+    URI;
+    wsServer;
+    auth;
+    pass;
 }

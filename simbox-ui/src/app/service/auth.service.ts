@@ -107,6 +107,7 @@ doLoginUser(username: string, tokens: Tokens){
     localStorage.removeItem ("simboxid");
     localStorage.removeItem ("mnoid");
     localStorage.removeItem ("username");
+    localStorage.removeItem ("simboxname");
     this.removeTokens();
 
 
