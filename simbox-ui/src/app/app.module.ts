@@ -22,7 +22,7 @@ import { TokenInterceptor } from './token.interceptor';
     AppComponent,
     LoginComponent,
     NavigationComponent,
-    WebphoneComponent
+    WebphoneComponent,
   ],
   imports: [
     HttpClientModule,
