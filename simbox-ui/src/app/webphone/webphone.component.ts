@@ -1,22 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { MenuItem } from 'primeng/api';
+import { MessageService } from 'primeng/components/common/messageservice';
 import * as SIP from 'sip.js/dist/sip';
-import * as accept from 'sip.js/dist/sip';
-import * as UA from 'sip.js/dist/sip';
-import * as MediaStream from 'sip.js/dist/sip';
-
-
-import {
-  Logger, on, start, invite, call, shouldAcceptRefer, config, session, srcObject, play, remoteAudio, sessionDescriptionHandler, peerConnection, getReceivers, answer, trackAdded, forEach,
-  receiver, addTrack, track,sender
-} from 'sip.js/dist/sip';
+import {session} from 'sip.js/dist/sip';
 import { AuthService } from '../service/auth.service';
 import { WebphoneService } from '../webphone/webphone.service';
-import { MessageService } from 'primeng/components/common/messageservice';
-import { MenuItem } from 'primeng/api';
-
-import { Router } from '@angular/router';
 import { webphone } from './webphone';
+
+
+
+
 @Component({
   selector: 'app-webphone',
   templateUrl: './webphone.component.html',
@@ -26,35 +20,11 @@ import { webphone } from './webphone';
 })
 
 export class WebphoneComponent implements OnInit {
-  userAgent: UA;
-  loadAPI: Promise<any>;
-  url: string;
-  peerConnection: peerConnection;
   configmno: webphone[];
   items: MenuItem[];
   selectconfig: webphone;
-  public logger: Logger;
-  on: on;
-  start: start;
-  ua: UA;
-  call: call;
-  simple: any;
-  invite: invite;
-  session: session;
-  config: config;
-  srcObject: srcObject;
-  // play: play; 
-  sessionDescriptionHandler: sessionDescriptionHandler;
-  getReceivers: getReceivers;
-  answer: answer;
-  trackAdded: trackAdded;
-  forEach: forEach;
-  receiver: receiver;
-  addTrack: addTrack;
-  remoteVideo;localVideo:HTMLElement;
-  track: track;
-  sender:sender ; 
-  constructor(private authService: AuthService, private configList: WebphoneService, private router: Router) {
+  ua;
+  constructor(private authService: AuthService, private configList: WebphoneService, private router: Router,) {
 
 
   }
@@ -62,18 +32,24 @@ export class WebphoneComponent implements OnInit {
 
   ngOnInit() {
     this.configList.getMnosList().then(data => this.configmno = data);
-  }
+  
 
+  }
   simboxname = localStorage.getItem('simboxname');
 
 
+
   onClick(webphone) {
-    this.userAgent = new SIP.UA({
+    this.ua = new SIP.UA({
       uri: webphone.URI,
       transportOptions: {
         wsServers: [webphone.wsServer],
-        register: true,
-        traceSip: true,
+        //  register: true,
+        //  traceSip: true,
+        hackWssInTransport: true,
+      },
+      sessionDescriptionHandlerOptions: {
+        iceCheckingTimeout: 500
       },
       authorizationUser: webphone.auth,
       password: webphone.pass,
@@ -82,54 +58,50 @@ export class WebphoneComponent implements OnInit {
   }
 
 
-  configuseragent(callnumber: string) {
-    console.log(callnumber)
-    // this.userAgent.start(),
-    this.session = this.userAgent.invite(callnumber + '@192.168.1.161', {
+
+  
+  callinvite(callnumber: string) {
+    console.log (callnumber);
+      let session = this.ua.invite(callnumber,{
       sessionDescriptionHandlerOptions: {
-        constraints: {
-          audio: true,
-          video: false
-        },
+          constraints: {
+              audio: true,
+              video: false
 
-      },
+          }
 
+      }
     });
+        //2. atach media to html tags
+    let remoteAudio = <HTMLAudioElement>document.getElementById('remoteAudio');
+    let localAudio = <HTMLAudioElement>document.getElementById('localAudio');
+    this.ua.on('invite', (session) => session.accept());
+    session.on('trackAdded', function() {
+      // We need to check the peer connection to determine which track was added
+      let pc = session.sessionDescriptionHandler.peerConnection;
 
-
-
-
-    //   session.on('invite');
-    // session.accept('invite');
-    this.remoteVideo = document.getElementById('remoteVideo');
-    this.localVideo = document.getElementById('localVideo');
-
-    this.session.on(this.trackAdded, function () {
-
-      var pc = this.session.sessionDescriptionHandler.peerConnection;
-      var remoteStream = new MediaStream();
-      pc.this.getReceivers().this.forEach(function (this: receiver) {
-        this.remoteStream.addTrack(receiver.track);
+      // Gets remote tracks
+      let remoteStream = new MediaStream();
+      pc.getReceivers().forEach(function(receiver) {
+        remoteStream.addTrack(receiver.track);
       });
-      this.remoteVideo.srcObject = remoteStream;
-      this.remoteVideo.play();
+     remoteAudio.srcObject = remoteStream;
+     remoteAudio.play();
 
-      var localStream = new MediaStream();
-      pc.this.getSenders().this.forEach(function (this:sender) {
-        this.localStream.addTrack(sender.track);
+      // Gets local tracks
+      let localStream = new MediaStream();
+      pc.getSenders().forEach(function(sender) {
+        localStream.addTrack(sender.track);
       });
-      this.localVideo.srcObject = localStream;
-      this.localVideo.play();
-
-    })
-    this.session.on('invite', function () { this.session.answer() });
-
+      localAudio.srcObject = localStream;
+      localAudio.play();
+    });
 
   }
 
 
 
-
+ 
 
 
 
